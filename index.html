@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>آفاق ERP | نظام محاسبة وإدارة أعمال بالعربية</title>
+<meta name="description" content="آفاق ERP: محاسبة بقيد مزدوج، فواتير، مخزون، بنوك وتقارير مالية في برنامج واحد على ويندوز، بواجهة عربية كاملة وبياناتك على جهازك.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="آفاق ERP | نظام محاسبة وإدارة أعمال بالعربية">
+<meta property="og:description" content="محاسبة، فواتير، مخزون، بنوك وتقارير مالية في برنامج واحد على ويندوز.">
+<meta property="og:image" content="https://kali19909.github.io/afaq-site/assets/og.png">
+<meta name="theme-color" content="#0F2142">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Noto+Kufi+Arabic:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B1830;
+  --navy:#0F2142;
+  --navy-2:#1B3F73;
+  --gold:#E8C170;
+  --gold-deep:#B88A2E;
+  --paper:#F3F5F9;
+  --white:#FFFFFF;
+  --line:#D5DCE8;
+  --muted:#51607A;
+  --wa:#1FA855;
+  --maxw:1120px;
+  --display:"Noto Kufi Arabic","Tajawal",system-ui,sans-serif;
+  --body:"IBM Plex Sans Arabic","Tajawal",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:var(--body);font-size:17px;line-height:1.85;color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased}
+img,video,svg{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(var(--maxw),100% - 32px);margin-inline:auto}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+
+/* ---------- header ---------- */
+.top{position:sticky;top:0;z-index:20;background:rgba(15,33,66,.94);backdrop-filter:blur(8px);border-bottom:1px solid rgba(232,193,112,.18)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
+.brand b{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:0}
+.erp{font:600 11px/1 var(--body);letter-spacing:.14em;color:var(--gold);border:1px solid var(--gold);border-radius:999px;padding:4px 8px 3px;direction:ltr}
+.nav{display:flex;gap:26px}
+.nav a{color:#CBD6EA;text-decoration:none;font-size:15px;font-weight:500}
+.nav a:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 16px/1 var(--body);text-decoration:none;border-radius:10px;padding:14px 22px;border:1.5px solid transparent;cursor:pointer;transition:transform .15s ease,background .15s ease}
+.btn:active{transform:translateY(1px)}
+.btn-gold{background:var(--gold);color:var(--navy)}
+.btn-gold:hover{background:#F0CD86}
+.btn-line{border-color:rgba(255,255,255,.35);color:#fff}
+.btn-line:hover{background:rgba(255,255,255,.08)}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-wa:hover{background:#18964b}
+.btn-sm{padding:10px 16px;font-size:15px}
+.btn svg{width:20px;height:20px;flex:none}
+
+/* ---------- hero: the horizon ---------- */
+.hero{position:relative;overflow:hidden;color:#fff;background:linear-gradient(180deg,var(--navy-2) 0%,var(--navy) 62%)}
+.hero .wrap{position:relative;z-index:2;padding-top:72px}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,5.4vw,60px);line-height:1.35;max-width:15em}
+.hero .lead{margin-top:22px;max-width:36em;font-size:19px;color:#D3DEF0}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.facts{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px 28px;color:#AFC0DD;font-size:15px}
+.facts span{display:inline-flex;align-items:center;gap:8px}
+.facts span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.horizon{position:relative;z-index:1;height:0;margin-top:56px}
+.horizon::before{content:"";position:absolute;inset-inline:0;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold) 14%,var(--gold) 86%,transparent);transform-origin:center;animation:draw 1.2s .1s cubic-bezier(.2,.7,.2,1) both}
+.sun{position:absolute;left:max(6%,calc(50% - 540px));bottom:0;width:clamp(150px,20vw,250px);aspect-ratio:2/1;border-radius:999px 999px 0 0;background:linear-gradient(180deg,#F7DDA0,var(--gold) 55%,#D9A94C);box-shadow:0 0 90px 24px rgba(232,193,112,.38);animation:rise 1.6s .35s cubic-bezier(.2,.7,.2,1) both}
+.sky{position:absolute;inset-inline:0;bottom:0;height:340px;overflow:hidden;pointer-events:none}
+.hero .wrap.shotwrap{padding-top:34px}
+.shot{position:relative;z-index:2;margin-top:0}
+.window{background:#fff;border-radius:14px 14px 0 0;overflow:hidden;box-shadow:0 -10px 60px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.14);border-bottom:0}
+.window .bar{height:34px;background:#E9EDF4;display:flex;align-items:center;gap:7px;padding-inline:14px}
+.window .bar i{width:10px;height:10px;border-radius:50%;background:#C3CBDA}
+.window img{width:100%;height:auto}
+@keyframes draw{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
+@keyframes rise{from{transform:translateY(100%)}to{transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){.horizon::before,.sun{animation:none}}
+
+/* ---------- sections ---------- */
+section{padding:92px 0}
+.alt{background:var(--paper)}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(26px,3.6vw,38px);line-height:1.45;max-width:20em}
+.sub{margin-top:14px;max-width:38em;color:var(--muted);font-size:18px}
+.rule2{width:72px;height:7px;border-top:2px solid var(--gold-deep);border-bottom:2px solid var(--gold-deep);margin-top:22px}
+
+/* ledger */
+.ledger{margin-top:44px;border-top:2px solid var(--ink)}
+.row{display:grid;grid-template-columns:230px 1fr;gap:12px 40px;padding:28px 0;border-bottom:1px solid var(--line)}
+.row h3{font-family:var(--display);font-weight:800;font-size:20px;line-height:1.5}
+.row p{color:var(--muted);margin-top:6px;font-size:16px;line-height:1.8}
+.row ul{list-style:none;columns:2;column-gap:36px}
+.row li{break-inside:avoid;padding:3px 0 3px 0;padding-inline-start:18px;position:relative;font-size:16.5px}
+.row li::before{content:"";position:absolute;inset-inline-start:0;top:.95em;width:8px;height:2px;background:var(--gold-deep)}
+
+/* video */
+.video{margin-top:40px;border-radius:14px;overflow:hidden;background:#000;box-shadow:0 20px 60px rgba(15,33,66,.25)}
+.video video{width:100%;height:auto;aspect-ratio:16/9;background:#000}
+
+/* controls + journal */
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start;margin-top:44px}
+.ctl{list-style:none;border-top:1px solid var(--line)}
+.ctl li{padding:18px 0;border-bottom:1px solid var(--line)}
+.ctl b{font-family:var(--display);font-weight:800;font-size:18px;display:block}
+.ctl span{color:var(--muted);font-size:16px}
+.journal{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 22px 26px;box-shadow:0 10px 40px rgba(15,33,66,.08)}
+.journal .tag{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:14px;color:var(--muted);margin-bottom:6px}
+.journal .tag b{font-family:var(--display);font-size:16px;color:var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:15.5px;font-variant-numeric:tabular-nums}
+th{font-weight:600;text-align:start;color:var(--muted);border-bottom:2px solid var(--ink);padding:8px 6px;font-size:14px}
+td{padding:9px 6px;border-bottom:1px solid var(--line)}
+td.n,th.n{text-align:end;direction:ltr}
+tr.sep td{padding-top:20px;border-bottom:0;font-family:var(--display);font-weight:800;font-size:15px}
+tr.rev td{color:#8A4B1F}
+.note{margin-top:16px;font-size:14.5px;color:var(--muted)}
+
+/* details trio */
+.trio{display:grid;grid-template-columns:repeat(3,1fr);margin-top:44px}
+.trio>div{padding:4px 30px;border-inline-start:1px solid var(--line)}
+.trio>div:first-child{border-inline-start:0;padding-inline-start:0}
+.trio>div:last-child{padding-inline-end:0}
+.trio h3{font-family:var(--display);font-weight:800;font-size:19px;margin-bottom:8px;line-height:1.5}
+.trio p{color:var(--muted);font-size:16px}
+
+/* start */
+.start{max-width:760px;margin-top:44px}
+.steps{list-style:none;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:44px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+.steps li:first-child{border-top:1px solid var(--line)}
+.steps li::before{content:counter(s);width:44px;height:44px;border-radius:50%;background:var(--navy);color:var(--gold);font:800 18px/44px var(--display);text-align:center}
+.steps b{font-family:var(--display);font-weight:800;font-size:18px;display:block;line-height:1.6}
+.steps span{color:var(--muted);font-size:16px}
+
+/* final */
+.final{background:linear-gradient(180deg,var(--navy-2),var(--navy));color:#fff;text-align:start}
+.final .inner{display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap}
+.final h2{max-width:16em}
+.final p{color:#C5D2EA;margin-top:12px;max-width:34em}
+.num{direction:ltr;unicode-bidi:isolate;display:inline-block;font-weight:600;letter-spacing:.02em}
+footer{background:#0A1830;color:#8FA2C4;padding:30px 0;font-size:14.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .nav{display:none}
+  .row{grid-template-columns:1fr;padding:24px 0}
+  .split{grid-template-columns:1fr;gap:36px}
+  .trio{grid-template-columns:1fr}
+  .trio>div,.trio>div:first-child,.trio>div:last-child{padding:22px 0;border-inline-start:0;border-top:1px solid var(--line)}
+  .trio>div:first-child{border-top:0;padding-top:0}
+}
+@media (max-width:560px){
+  body{font-size:16.5px}
+  section{padding:68px 0}
+  .hero .wrap{padding-top:48px}
+  .hero .lead{font-size:17.5px}
+  .row ul{columns:1}
+  .btn{padding:14px 18px}
+  .top .btn-sm{padding:9px 12px;font-size:14px}
+  .top .btn-sm span{display:none}
+    .sun{left:6%}
+  .horizon{margin-top:40px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="آفاق ERP">
+      <svg width="38" height="38" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1B3F73"/><path d="M19 40a13 13 0 0 1 26 0z" fill="#E8C170"/><g stroke="#E8C170" stroke-width="3" stroke-linecap="round"><path d="M32 17v5M18.5 22.5l3.5 3.5M45.5 22.5L42 26M12 33h5M47 33h5"/><path d="M15 44.5h34"/></g></svg>
+      <b>آفاق</b><span class="erp">ERP</span>
+    </a>
+    <nav class="nav" aria-label="الأقسام">
+      <a href="#features">ما يغطيه</a>
+      <a href="#video">العرض</a>
+      <a href="#controls">الضوابط</a>
+      <a href="#start">البدء</a>
+    </nav>
+    <a class="btn btn-wa btn-sm" href="https://wa.me/963939643607?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%86%D8%B3%D8%AE%D8%A9%20%D8%AA%D8%AC%D8%B1%D9%8A%D8%A8%D9%8A%D8%A9%20%D9%85%D9%86%20%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC%20%D8%A2%D9%81%D8%A7%D9%82%20ERP" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 .1 5.3.1 11.9c0 2.1.6 4.2 1.6 6L0 24l6.3-1.7a11.9 11.9 0 0 0 5.7 1.5c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.4-8.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4a9.8 9.8 0 0 1-1.5-5.2C2.2 6.5 6.6 2.1 12 2.1c2.6 0 5.1 1 6.9 2.9a9.7 9.7 0 0 1 2.9 6.9c0 5.4-4.4 9.9-9.8 9.9zm5.4-7.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a8 8 0 0 1-2.4-1.5 9 9 0 0 1-1.6-2c-.2-.3 0-.4.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4l-.5-.3z"/></svg>
+      <span>تواصل عبر واتساب</span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="wrap">
+    <h1>المحاسبة والفواتير والمخزون في نظام واحد، بالعربية من أول شاشة</h1>
+    <p class="lead">آفاق ERP برنامج لإدارة الأعمال على ويندوز. قيود مزدوجة وتقارير مالية مبنية على المبادئ المحاسبية الدولية، وبياناتك محفوظة على جهازك أنت.</p>
+    <div class="cta">
+      <a class="btn btn-gold" href="https://wa.me/963939643607?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%86%D8%B3%D8%AE%D8%A9%20%D8%AA%D8%AC%D8%B1%D9%8A%D8%A8%D9%8A%D8%A9%20%D9%85%D9%86%20%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC%20%D8%A2%D9%81%D8%A7%D9%82%20ERP" target="_blank" rel="noopener">اطلب نسخة تجريبية</a>
+      <a class="btn btn-line" href="#video">شاهد العرض</a>
+    </div>
+    <div class="facts">
+      <span>تجربة مجانية 3 أيام</span>
+      <span>ويندوز 10 و11</span>
+      <span>التفعيل بدون إنترنت</span>
+    </div>
+  </div>
+  <div class="horizon" aria-hidden="true"><div class="sky"><div class="sun"></div></div></div>
+  <div class="wrap shotwrap">
+    <div class="shot">
+      <div class="window">
+        <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+        <img src="assets/dashboard.png" width="1365" height="402" alt="لوحة التحكم الرئيسية في آفاق ERP: القائمة العلوية والجانبية، أزرار سحب نقدي وملخص اليوم وعرض على الموبايل">
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="features">
+  <div class="wrap">
+    <h2>ما يغطيه آفاق في إدارة عملك اليومية</h2>
+    <p class="sub">كل وحدة مرتبطة بالأخرى: الفاتورة تحرّك المخزون والقيد المحاسبي والصندوق، فتظهر النتيجة في التقارير مباشرة.</p>
+    <div class="rule2" aria-hidden="true"></div>
+
+    <div class="ledger">
+      <div class="row">
+        <div><h3>المحاسبة والقوائم المالية</h3><p>قيد مزدوج كامل، مع القوائم التي يطلبها المحاسب والمدقق.</p></div>
+        <ul>
+          <li>شجرة الحسابات والقيود اليومية</li>
+          <li>دفتر الأستاذ وكشف الحساب</li>
+          <li>ميزان المراجعة</li>
+          <li>قائمة الدخل والميزانية</li>
+          <li>قائمة التدفقات النقدية (IAS 7)</li>
+          <li>إعادة تقييم فروق الصرف</li>
+          <li>قفل الفترات المحاسبية</li>
+          <li>مراكز التكلفة</li>
+        </ul>
+      </div>
+      <div class="row">
+        <div><h3>المبيعات والمشتريات</h3><p>فواتير بتسلسل مرقّم، وتبقى مسودة حتى تؤكدها.</p></div>
+        <ul>
+          <li>فاتورة مبيعات مرقّمة تلقائيًا</li>
+          <li>فاتورة مشتريات من المورد</li>
+          <li>خصم نسبة لكل سطر</li>
+          <li>شروط الدفع وتاريخ الاستحقاق</li>
+          <li>مرتجع المشتريات وإشعار المدين</li>
+          <li>طباعة الفاتورة PDF بخط عربي</li>
+        </ul>
+      </div>
+      <div class="row">
+        <div><h3>العملاء والموردون</h3><p>تعرف من عليه ومن له، ومنذ متى.</p></div>
+        <ul>
+          <li>كشف حساب لكل عميل ومورد</li>
+          <li>أعمار الديون للعملاء والموردين</li>
+          <li>مطابقة الأعمار مع حساب الرقابة</li>
+          <li>متابعة الديون المستحقة</li>
+        </ul>
+      </div>
+      <div class="row">
+        <div><h3>المخزون</h3><p>أرصدة دقيقة بالمستودع والفرع.</p></div>
+        <ul>
+          <li>مستودعات وفروع متعددة</li>
+          <li>تقييم المخزون</li>
+          <li>الجرد وتسوية المخزون</li>
+          <li>جرد أعمى واعتماد بسبب مكتوب</li>
+          <li>تنبيه الأصناف المنخفضة</li>
+        </ul>
+      </div>
+      <div class="row">
+        <div><h3>النقد والبنوك</h3><p>صندوق لكل فرع، وبنك يُطابق مع كشفه.</p></div>
+        <ul>
+          <li>حسابات بنكية ومطابقة بنكية</li>
+          <li>استيراد كشف البنك من ملف CSV</li>
+          <li>الشيكات: قبض ودفع وتحصيل</li>
+          <li>سحب نقدي سريع من لوحة التحكم</li>
+          <li>ملخص اليوم: نقد وفواتير</li>
+        </ul>
+      </div>
+      <div class="row">
+        <div><h3>الأصول والرواتب</h3><p>ما تحتاجه الشركة بعد الفواتير.</p></div>
+        <ul>
+          <li>الأصول الثابتة والإهلاك</li>
+          <li>الرواتب</li>
+          <li>المستخدمون والصلاحيات</li>
+          <li>نسخ احتياطي تلقائي واستعادة</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="video" class="alt">
+  <div class="wrap">
+    <h2>شاهد آفاق في 20 ثانية</h2>
+    <div class="video">
+      <video controls preload="none" poster="assets/poster.jpg" playsinline>
+        <source src="assets/afaq-promo.mp4" type="video/mp4">
+        متصفحك لا يدعم تشغيل الفيديو.
+      </video>
+    </div>
+  </div>
+</section>
+
+<section id="controls">
+  <div class="wrap">
+    <h2>ضوابط رقابية تُبنى مع كل عملية</h2>
+    <p class="sub">المحاسب والمدقق يسألون عن الأثر لا عن الشكل. لذلك صُمّم آفاق ليحفظ الأثر.</p>
+    <div class="rule2" aria-hidden="true"></div>
+    <div class="split">
+      <ul class="ctl">
+        <li><b>العكس بدل الحذف</b><span>القيد الخاطئ لا يُمحى. يُنشأ قيد عكسي ويبقى الأصل ظاهرًا في السجل.</span></li>
+        <li><b>سجل تدقيق</b><span>من فعل ماذا ومتى، لكل عملية مالية.</span></li>
+        <li><b>فصل المُعِد عن المعتمِد</b><span>اعتماد الجرد وإعادة التقييم بصلاحية مستقلة عن من أنشأه.</span></li>
+        <li><b>قفل الفترة</b><span>بعد إقفال الشهر لا يستطيع أحد إدخال عملية في تاريخ مضى.</span></li>
+        <li><b>صلاحيات لكل مستخدم</b><span>كل موظف يرى ويفعل ما يخصّه فقط.</span></li>
+      </ul>
+      <div class="journal" role="group" aria-label="مثال توضيحي لقيد وعكسه">
+        <div class="tag"><b>مثال على العكس</b><span>أرقام توضيحية</span></div>
+        <table>
+          <thead><tr><th>الحساب</th><th class="n">مدين</th><th class="n">دائن</th></tr></thead>
+          <tbody>
+            <tr class="sep"><td colspan="3">القيد الأصلي</td></tr>
+            <tr><td>العملاء</td><td class="n">1,000</td><td class="n"></td></tr>
+            <tr><td>إيرادات المبيعات</td><td class="n"></td><td class="n">1,000</td></tr>
+            <tr class="sep rev"><td colspan="3">القيد العكسي</td></tr>
+            <tr class="rev"><td>إيرادات المبيعات</td><td class="n">1,000</td><td class="n"></td></tr>
+            <tr class="rev"><td>العملاء</td><td class="n"></td><td class="n">1,000</td></tr>
+          </tbody>
+        </table>
+        <p class="note">القيدان يبقيان في الدفتر، والرصيد يعود إلى الصفر.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>تفاصيل تهمّك يوميًا</h2>
+    <div class="trio">
+      <div>
+        <h3>تابع عملك من الهاتف</h3>
+        <p>زر «عرض على الموبايل» يعرض رمز QR. امسحه بكاميرا الهاتف العادية على نفس شبكة الواي فاي لترى المبيعات والمشتريات والأرباح بصفحة للقراءة فقط.</p>
+      </div>
+      <div>
+        <h3>وضع المبتدئ</h3>
+        <p>مفتاح في الشريط العلوي يبدّل أسماء القوائم إلى لغة عادية، فيفهمها من لم يدرس المحاسبة. أوقفه متى شئت وارجع للمصطلحات المحاسبية.</p>
+      </div>
+      <div>
+        <h3>واجهة عربية بالكامل</h3>
+        <p>اتجاه من اليمين إلى اليسار في كل شاشة وكل تقرير مطبوع، بخط عربي واضح، ويقبل الأرقام العربية والإنجليزية في الإدخال.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="start">
+  <div class="wrap">
+    <h2>من التثبيت إلى أول فاتورة</h2>
+    <p class="sub">ملف تثبيت واحد، ومعالج يرافقك في الإعداد الأول.</p>
+    <div class="start">
+      <ol class="steps">
+        <li><div><b>ثبّت البرنامج</b><span>مثبّت ويندوز عادي، ويجلب ما يحتاجه من مكتبات النظام بنفسه.</span></div></li>
+        <li><div><b>أكمل معالج الإعداد</b><span>بيانات المنشأة وحساب المدير وسعر الدولار، في أقل من دقيقتين.</span></div></li>
+        <li><div><b>جرّب 3 أيام مجانًا</b><span>كل الميزات تعمل خلال التجربة، لتعمل على بياناتك الحقيقية.</span></div></li>
+        <li><div><b>فعّل بمفتاح خاص بجهازك</b><span>تُرسل لنا رمز جهازك فنعطيك مفتاح التفعيل. لا حاجة للإنترنت أثناء التفعيل.</span></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>بياناتك على جهازك، وتحديثاتك لا تمسّها</h2>
+    <div class="trio">
+      <div>
+        <h3>ملفات البيانات عندك</h3>
+        <p>تُحفظ قاعدة البيانات على حاسوبك في مجلد خاص بها، وليست على خادم نشترك فيه.</p>
+      </div>
+      <div>
+        <h3>تحديث فوق النسخة القديمة</h3>
+        <p>تشغّل المثبّت الجديد فتتحدّث النسخة، وتبقى بياناتك وتفعيلك كما هما.</p>
+      </div>
+      <div>
+        <h3>أكثر من ملف بيانات</h3>
+        <p>يمكنك فتح ملف بيانات لكل شركة أو لكل سنة، والتبديل بينها من داخل البرنامج.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap inner">
+    <div>
+      <h2>جرّب آفاق على عملك الحقيقي</h2>
+      <p>راسلنا على واتساب وسنرسل لك ملف التثبيت ونساعدك في الإعداد الأول.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+      <a class="btn btn-wa" href="https://wa.me/963939643607?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%86%D8%B3%D8%AE%D8%A9%20%D8%AA%D8%AC%D8%B1%D9%8A%D8%A8%D9%8A%D8%A9%20%D9%85%D9%86%20%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC%20%D8%A2%D9%81%D8%A7%D9%82%20ERP" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 .1 5.3.1 11.9c0 2.1.6 4.2 1.6 6L0 24l6.3-1.7a11.9 11.9 0 0 0 5.7 1.5c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.4-8.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4a9.8 9.8 0 0 1-1.5-5.2C2.2 6.5 6.6 2.1 12 2.1c2.6 0 5.1 1 6.9 2.9a9.7 9.7 0 0 1 2.9 6.9c0 5.4-4.4 9.9-9.8 9.9zm5.4-7.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a8 8 0 0 1-2.4-1.5 9 9 0 0 1-1.6-2c-.2-.3 0-.4.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4l-.5-.3z"/></svg>
+        راسلنا على واتساب
+      </a>
+      <span class="num" style="color:#AFC0DD;font-size:15px">+963 939 643 607</span>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 آفاق ERP</span>
+    <span>يعمل على ويندوز 10 وما بعده (64 بت)</span>
+  </div>
+</footer>
+</body>
+</html>
