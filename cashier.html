@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>آفاق كاشير | برنامج بيع سريع وطباعة فاتورة فورية للمطاعم</title>
+<meta name="description" content="آفاق كاشير: برنامج كاشير للمطاعم على ويندوز. اختر الأصناف واضغط طباعة فتخرج الفاتورة الصغيرة فورًا. إغلاق صندوق، نسخ احتياطي، ورمز مدير، وبياناتك على جهازك.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="آفاق كاشير | بيع سريع وفاتورة فورية للمطاعم">
+<meta property="og:description" content="اختر الأصناف، اضغط طباعة، وتخرج الفاتورة فورًا. برنامج كاشير لمطاعم الكاونتر على ويندوز.">
+<meta property="og:image" content="https://kali19909.github.io/afaq-site/assets/og.png">
+<meta name="theme-color" content="#0F2142">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Noto+Kufi+Arabic:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B1830; --navy:#0F2142; --navy-2:#1B3F73;
+  --gold:#E8C170; --gold-deep:#B88A2E;
+  --paper:#F3F5F9; --white:#fff; --line:#D5DCE8; --muted:#51607A; --wa:#1FA855;
+  --thermal:#FBFAF5; --thermal-ink:#1D2230;
+  --maxw:1120px;
+  --display:"Noto Kufi Arabic","Tajawal",system-ui,sans-serif;
+  --body:"IBM Plex Sans Arabic","Tajawal",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:var(--body);font-size:17px;line-height:1.85;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:min(var(--maxw),100% - 32px);margin-inline:auto}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+
+/* header */
+.top{position:sticky;top:0;z-index:20;background:rgba(15,33,66,.94);backdrop-filter:blur(8px);border-bottom:1px solid rgba(232,193,112,.18)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
+.brand b{font-family:var(--display);font-weight:800;font-size:22px}
+.tagp{font:600 12px/1 var(--body);color:var(--navy);background:var(--gold);border-radius:999px;padding:5px 10px 4px}
+.nav{display:flex;gap:26px;align-items:center}
+.nav a{color:#CBD6EA;text-decoration:none;font-size:15px;font-weight:500}
+.nav a:hover{color:#fff}
+.nav a.other{color:var(--gold);border-bottom:1px dashed rgba(232,193,112,.6)}
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 16px/1 var(--body);text-decoration:none;border-radius:10px;padding:14px 22px;border:1.5px solid transparent;cursor:pointer;transition:transform .15s ease,background .15s ease}
+.btn:active{transform:translateY(1px)}
+.btn-gold{background:var(--gold);color:var(--navy)}
+.btn-gold:hover{background:#F0CD86}
+.btn-line{border-color:rgba(255,255,255,.35);color:#fff}
+.btn-line:hover{background:rgba(255,255,255,.08)}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-wa:hover{background:#18964b}
+.btn-sm{padding:10px 16px;font-size:15px}
+.btn svg{width:20px;height:20px;flex:none}
+
+/* hero: the receipt */
+.hero{position:relative;overflow:hidden;color:#fff;background:linear-gradient(180deg,var(--navy-2) 0%,var(--navy) 70%)}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start;padding-top:72px;padding-bottom:80px}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(32px,5vw,56px);line-height:1.4;max-width:14em}
+.hero .lead{margin-top:22px;max-width:34em;font-size:19px;color:#D3DEF0}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.facts{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px 28px;color:#AFC0DD;font-size:15px}
+.facts span{display:inline-flex;align-items:center;gap:8px}
+.facts span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.glow{position:absolute;z-index:1;width:520px;height:520px;border-radius:50%;left:6%;top:40px;background:radial-gradient(closest-side,rgba(232,193,112,.28),transparent);pointer-events:none}
+.horizon{position:absolute;z-index:1;inset-inline:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold) 14%,var(--gold) 86%,transparent)}
+
+.printer{position:relative;width:min(330px,100%);margin-inline:auto;filter:drop-shadow(0 22px 28px rgba(0,0,0,.38))}
+.slot{position:relative;z-index:3;height:18px;border-radius:10px;background:linear-gradient(180deg,#070f20,#1d2f55);box-shadow:inset 0 -3px 0 rgba(232,193,112,.5)}
+.feed{overflow:hidden;margin:-2px 14px 0}
+.receipt{background:var(--thermal);color:var(--thermal-ink);padding:22px 20px 40px;font-size:14.5px;line-height:1.7;
+  -webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/16px 100%;
+          mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/16px 100%;
+  transform:translateY(-100%);animation:feed 3.4s .5s steps(30,end) forwards}
+.receipt .rname{font-family:var(--display);font-weight:800;font-size:19px;text-align:center;line-height:1.5}
+.receipt .rmeta{text-align:center;font-size:13px;color:#5b6272}
+.receipt hr{border:0;border-top:1.5px dashed #aab0be;margin:11px 0}
+.receipt .ty{display:flex;justify-content:space-between;font-weight:600}
+.rline{display:grid;grid-template-columns:1fr auto;gap:2px 10px}
+.rline .q{grid-column:1 / -1;font-size:13px;color:#5b6272;direction:ltr;text-align:start}
+.rline .amt,.num{direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums;font-weight:600}
+.receipt .tot{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--display);font-weight:800;font-size:20px}
+.receipt .rfoot{text-align:center;margin-top:8px;font-weight:500}
+.ex{margin-top:14px;text-align:center;font-size:13.5px;color:#9FB1D1}
+@keyframes feed{from{transform:translateY(-100%)}to{transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){.receipt{animation:none;transform:none}}
+
+/* sections */
+section{padding:92px 0}
+.alt{background:var(--paper)}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(26px,3.6vw,38px);line-height:1.45;max-width:20em}
+.sub{margin-top:14px;max-width:38em;color:var(--muted);font-size:18px}
+.rule2{width:72px;height:7px;border-top:2px solid var(--gold-deep);border-bottom:2px solid var(--gold-deep);margin-top:22px}
+
+/* flow: a real sequence */
+.flow{list-style:none;counter-reset:f;margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--ink)}
+.flow li{counter-increment:f;padding:26px 28px 6px;border-inline-start:1px solid var(--line)}
+.flow li:first-child{border-inline-start:0;padding-inline-start:0}
+.flow li::before{content:counter(f);display:block;font:800 34px/1 var(--display);color:var(--gold-deep);margin-bottom:12px}
+.flow b{font-family:var(--display);font-weight:800;font-size:19px;display:block;line-height:1.55}
+.flow span{color:var(--muted);font-size:16px}
+
+/* ledger */
+.ledger{margin-top:44px;border-top:2px solid var(--ink)}
+.row{display:grid;grid-template-columns:230px 1fr;gap:12px 40px;padding:28px 0;border-bottom:1px solid var(--line)}
+.row h3{font-family:var(--display);font-weight:800;font-size:20px;line-height:1.5}
+.row p{color:var(--muted);margin-top:6px;font-size:16px;line-height:1.8}
+.row ul{list-style:none;columns:2;column-gap:36px}
+.row li{break-inside:avoid;padding:3px 0;padding-inline-start:18px;position:relative;font-size:16.5px}
+.row li::before{content:"";position:absolute;inset-inline-start:0;top:.95em;width:8px;height:2px;background:var(--gold-deep)}
+
+/* roles */
+.roles{display:grid;grid-template-columns:1fr 1fr;margin-top:44px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.roles>div{padding:28px 30px}
+.roles>div+div{border-inline-start:1px solid var(--line);background:var(--navy);color:#fff}
+.roles h3{font-family:var(--display);font-weight:800;font-size:20px;margin-bottom:4px}
+.roles .who{font-size:15px;color:var(--muted);margin-bottom:14px}
+.roles>div+div .who{color:#AFC0DD}
+.roles ul{list-style:none}
+.roles li{padding:8px 0;border-top:1px solid var(--line);font-size:16.5px}
+.roles>div+div li{border-top-color:rgba(255,255,255,.16)}
+.roles li:first-child{border-top:0}
+
+/* trio */
+.trio{display:grid;grid-template-columns:repeat(3,1fr);margin-top:44px}
+.trio>div{padding:4px 30px;border-inline-start:1px solid var(--line)}
+.trio>div:first-child{border-inline-start:0;padding-inline-start:0}
+.trio>div:last-child{padding-inline-end:0}
+.trio h3{font-family:var(--display);font-weight:800;font-size:19px;margin-bottom:8px;line-height:1.5}
+.trio p{color:var(--muted);font-size:16px}
+
+/* start */
+.start{max-width:760px;margin-top:44px}
+.steps{list-style:none;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:44px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+.steps li:first-child{border-top:1px solid var(--line)}
+.steps li::before{content:counter(s);width:44px;height:44px;border-radius:50%;background:var(--navy);color:var(--gold);font:800 18px/44px var(--display);text-align:center}
+.steps b{font-family:var(--display);font-weight:800;font-size:18px;display:block;line-height:1.6}
+.steps span{color:var(--muted);font-size:16px}
+
+/* final */
+.final{background:linear-gradient(180deg,var(--navy-2),var(--navy));color:#fff}
+.final .inner{display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap}
+.final h2{max-width:16em}
+.final p{color:#C5D2EA;margin-top:12px;max-width:34em}
+footer{background:#0A1830;color:#8FA2C4;padding:30px 0;font-size:14.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+footer a{color:#C5D2EA}
+
+@media (max-width:900px){
+  .nav a:not(.other){display:none}
+  .hero .wrap{grid-template-columns:1fr;gap:40px;padding-top:48px;padding-bottom:64px}
+  .glow{left:-20%}
+  .flow{grid-template-columns:1fr}
+  .flow li,.flow li:first-child{padding:22px 0;border-inline-start:0;border-top:1px solid var(--line)}
+  .flow li:first-child{border-top:0}
+  .row{grid-template-columns:1fr;padding:24px 0}
+  .roles{grid-template-columns:1fr}
+  .roles>div+div{border-inline-start:0}
+  .trio{grid-template-columns:1fr}
+  .trio>div,.trio>div:first-child,.trio>div:last-child{padding:22px 0;border-inline-start:0;border-top:1px solid var(--line)}
+  .trio>div:first-child{border-top:0;padding-top:0}
+}
+@media (max-width:560px){
+  body{font-size:16.5px}
+  section{padding:68px 0}
+  .hero .lead{font-size:17.5px}
+  .row ul{columns:1}
+  .btn{padding:14px 18px}
+  .top .btn-sm{padding:9px 12px;font-size:14px}
+  .top .btn-sm span{display:none}
+  .roles>div{padding:22px 20px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="آفاق كاشير">
+      <svg width="38" height="38" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1B3F73"/><path d="M19 40a13 13 0 0 1 26 0z" fill="#E8C170"/><g stroke="#E8C170" stroke-width="3" stroke-linecap="round"><path d="M32 17v5M18.5 22.5l3.5 3.5M45.5 22.5L42 26M12 33h5M47 33h5"/><path d="M15 44.5h34"/></g></svg>
+      <b>آفاق</b><span class="tagp">كاشير</span>
+    </a>
+    <nav class="nav" aria-label="الأقسام">
+      <a href="#how">كيف يعمل</a>
+      <a href="#features">ما يغطيه</a>
+      <a href="#roles">الصلاحيات</a>
+      <a href="#start">البدء</a>
+      <a class="other" href="index.html">آفاق ERP للمحاسبة</a>
+    </nav>
+    <a class="btn btn-wa btn-sm" href="https://wa.me/963939643607?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%86%D8%B3%D8%AE%D8%A9%20%D8%AA%D8%AC%D8%B1%D9%8A%D8%A8%D9%8A%D8%A9%20%D9%85%D9%86%20%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC%20%D8%A2%D9%81%D8%A7%D9%82%20%D9%83%D8%A7%D8%B4%D9%8A%D8%B1" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 .1 5.3.1 11.9c0 2.1.6 4.2 1.6 6L0 24l6.3-1.7a11.9 11.9 0 0 0 5.7 1.5c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.4-8.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4a9.8 9.8 0 0 1-1.5-5.2C2.2 6.5 6.6 2.1 12 2.1c2.6 0 5.1 1 6.9 2.9a9.7 9.7 0 0 1 2.9 6.9c0 5.4-4.4 9.9-9.8 9.9zm5.4-7.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a8 8 0 0 1-2.4-1.5 9 9 0 0 1-1.6-2c-.2-.3 0-.4.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4l-.5-.3z"/></svg>
+      <span>تواصل عبر واتساب</span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div>
+      <h1>اضغط طباعة، وتخرج فاتورة الزبون فورًا</h1>
+      <p class="lead">آفاق كاشير برنامج بيع سريع لمطاعم الكاونتر على ويندوز. تختار الأصناف وتضغط زرًا واحدًا، فتُحفظ الفاتورة وتُطبع على الطابعة الحرارية الصغيرة بدون أي نافذة وسيطة.</p>
+      <div class="cta">
+        <a class="btn btn-gold" href="https://github.com/kali19909/afaq-site/releases/latest/download/AfaqCashier-Setup.exe" download>حمّل النسخة التجريبية</a>
+        <a class="btn btn-line" href="https://wa.me/963939643607?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%86%D8%B3%D8%AE%D8%A9%20%D8%AA%D8%AC%D8%B1%D9%8A%D8%A8%D9%8A%D8%A9%20%D9%85%D9%86%20%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC%20%D8%A2%D9%81%D8%A7%D9%82%20%D9%83%D8%A7%D8%B4%D9%8A%D8%B1" target="_blank" rel="noopener">تواصل عبر واتساب</a>
+      </div>
+      <div class="facts">
+        <span>تجربة مجانية 3 أيام</span>
+        <span>طابعة حرارية 80 مم</span>
+        <span>يعمل بدون إنترنت</span>
+      </div>
+    </div>
+    <div>
+      <div class="printer" role="img" aria-label="مثال على فاتورة آفاق كاشير المطبوعة: شاورما عربي عدد 2، فروج مشوي عدد 1، عصير برتقال عدد 2، المجموع 175,000">
+        <div class="slot" aria-hidden="true"></div>
+        <div class="feed">
+          <div class="receipt" aria-hidden="true">
+            <div class="rname">مطعم الشام</div>
+            <div class="rmeta">دمشق - شارع الثورة<br><span class="num">0999 000 000</span></div>
+            <hr>
+            <div class="ty"><span>فاتورة <span class="num">#0128</span></span><span>سفري</span></div>
+            <div class="rmeta"><span class="num">12/10/2026 - 13:42</span></div>
+            <hr>
+            <div class="rline"><span>شاورما عربي</span><span class="amt">60,000</span><span class="q">2 × 30,000</span></div>
+            <div class="rline"><span>فروج مشوي</span><span class="amt">85,000</span><span class="q">1 × 85,000</span></div>
+            <div class="rline"><span>عصير برتقال</span><span class="amt">30,000</span><span class="q">2 × 15,000</span></div>
+            <hr>
+            <div class="tot"><span>المجموع</span><span class="amt">175,000 ل.س</span></div>
+            <hr>
+            <div class="rfoot">شكرًا لزيارتكم</div>
+          </div>
+        </div>
+      </div>
+      <p class="ex">مثال توضيحي لفاتورة مطبوعة (أسماء وأرقام تجريبية)</p>
+    </div>
+  </div>
+  <div class="horizon" aria-hidden="true"></div>
+</div>
+
+<section id="how">
+  <div class="wrap">
+    <h2>من وصول الزبون إلى خروج الفاتورة</h2>
+    <p class="sub">كل طلب يمرّ بثلاث خطوات فقط، ولا يحتاج الكاشير إلى تدريب طويل.</p>
+    <div class="rule2" aria-hidden="true"></div>
+    <ol class="flow">
+      <li><b>اختر الأصناف</b><span>اضغط بطاقة الصنف لإضافته، أو اكتب اسمه في خانة البحث واضغط Enter. الأصناف ملوّنة بأيقونات ومقسّمة إلى فئات.</span></li>
+      <li><b>حدّد نوع الطلب</b><span>محلي أو سفري أو توصيل، فيظهر النوع على الفاتورة ويدخل في تقرير آخر اليوم.</span></li>
+      <li><b>اضغط طباعة</b><span>تُحفظ الفاتورة برقم متسلسل وتخرج من الطابعة المختارة مباشرة، ثم تفرغ السلة للزبون التالي.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section id="features" class="alt">
+  <div class="wrap">
+    <h2>ما يغطيه آفاق كاشير في يوم عمل كامل</h2>
+    <p class="sub">من أول فاتورة صباحًا إلى إغلاق الصندوق في آخر الليل.</p>
+    <div class="rule2" aria-hidden="true"></div>
+    <div class="ledger">
+      <div class="row">
+        <div><h3>البيع السريع</h3><p>شاشة واحدة: الأصناف على جهة والسلة على الأخرى.</p></div>
+        <ul>
+          <li>بطاقات أصناف ملوّنة بأيقونات</li>
+          <li>فئات مثل شاورما ومشروبات وجانبية</li>
+          <li>بحث بالاسم وEnter يضيف أول نتيجة</li>
+          <li>إضافة صنف وتعديل سعره وحذفه</li>
+          <li>خلفية متدرجة مريحة للعين</li>
+        </ul>
+      </div>
+      <div class="row">
+        <div><h3>الفاتورة المطبوعة</h3><p>صغيرة وواضحة، تناسب الطابعة الحرارية.</p></div>
+        <ul>
+          <li>طباعة مباشرة بدون نافذة اختيار</li>
+          <li>ورق 80 مم، وطابعتك تُختار مرة واحدة</li>
+          <li>اسم المطعم وهاتفه وعنوانه على الفاتورة</li>
+          <li>عبارة ختام وعملة تضبطها بنفسك</li>
+          <li>خط عربي مدمج يعمل بدون إنترنت</li>
+        </ul>
+      </div>
+      <div class="row">
+        <div><h3>الفواتير وآخر اليوم</h3><p>كل فاتورة محفوظة وتُراجَع عند الحاجة.</p></div>
+        <ul>
+          <li>سجل الفواتير لكل يوم</li>
+          <li>إعادة طباعة نسخة من أي فاتورة</li>
+          <li>إلغاء الفاتورة بسبب مكتوب إلزاميًا</li>
+          <li>إغلاق الصندوق وتقرير مطبوع</li>
+          <li>مبيعات كل صنف وكل نوع طلب</li>
+          <li>الفواتير المغلقة لا يمكن إلغاؤها</li>
+        </ul>
+      </div>
+      <div class="row">
+        <div><h3>الحماية والنسخ</h3><p>بيانات مطعمك محفوظة وبيدك أنت.</p></div>
+        <ul>
+          <li>رمز مدير للإجراءات الحساسة</li>
+          <li>رمز استرجاع إن نسيت الرمز</li>
+          <li>نسخ احتياطي تلقائي عند الفتح وبعد كل إغلاق</li>
+          <li>نسخة إضافية على فلاشة أو مجلد آخر</li>
+          <li>استعادة أي نسخة من الإعدادات</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="roles">
+  <div class="wrap">
+    <h2>الكاشير يبيع، والمدير يقرّر</h2>
+    <p class="sub">الإجراءات التي تغيّر الأرقام أو الأسعار تطلب رمز المدير، فلا يعدّلها أحد بالخطأ أو عمدًا.</p>
+    <div class="rule2" aria-hidden="true"></div>
+    <div class="roles">
+      <div>
+        <h3>بدون أي رمز</h3>
+        <p class="who">ما يفعله الكاشير طوال اليوم</p>
+        <ul>
+          <li>اختيار الأصناف وإتمام البيع</li>
+          <li>طباعة الفاتورة</li>
+          <li>مراجعة سجل الفواتير</li>
+          <li>إعادة طباعة نسخة</li>
+        </ul>
+      </div>
+      <div>
+        <h3>برمز المدير</h3>
+        <p class="who">لا تفتح إلا بعد إدخال الرمز</p>
+        <ul>
+          <li>إلغاء فاتورة</li>
+          <li>إغلاق الصندوق</li>
+          <li>الإعدادات والنسخ الاحتياطي والاستعادة</li>
+          <li>إضافة صنف أو تعديل سعره أو حذفه</li>
+          <li>إدارة الفئات</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>مصمَّم للبيع على الكاونتر</h2>
+    <div class="trio">
+      <div>
+        <h3>بدون طاولات ولا شاشة مطبخ</h3>
+        <p>آفاق كاشير للطلب الفوري عند الكاونتر. لا يوجد فيه حجز طاولات ولا شاشة للمطبخ، فيبقى سريعًا وبسيطًا.</p>
+      </div>
+      <div>
+        <h3>بياناتك على جهازك</h3>
+        <p>الفواتير محفوظة في قاعدة بيانات على حاسوب المطعم نفسه. لا حساب ولا اشتراك ولا حاجة للإنترنت أثناء العمل.</p>
+      </div>
+      <div>
+        <h3>تحديث لا يمسّ بياناتك</h3>
+        <p>تشغّل المثبّت الجديد فتتحدّث النسخة، وتبقى فواتيرك وأصنافك وتفعيلك كما هي.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="start">
+  <div class="wrap">
+    <h2>من التثبيت إلى أول فاتورة</h2>
+    <p class="sub">ملف تثبيت واحد، وأول تشغيل يرشدك إلى ما تحتاجه.</p>
+    <div class="start">
+      <ol class="steps">
+        <li><div><b>حمّل البرنامج وثبّته</b><span>مثبّت ويندوز عادي يجلب ما يحتاجه من مكتبات النظام بنفسه. <a href="https://github.com/kali19909/afaq-site/releases/latest/download/AfaqCashier-Setup.exe" download style="color:var(--navy-2);font-weight:600">تحميل ملف التثبيت</a>. إن ظهر تحذير «ويندوز حمى جهازك» فاضغط «مزيد من المعلومات» ثم «تشغيل على أي حال»، فالبرنامج جديد ولم يُوقَّع رقميًا بعد.</span></div></li>
+        <li><div><b>أنشئ رمز المدير</b><span>في أول تشغيل تختار رمزًا من 4 إلى 8 أرقام، ويظهر لك رمز استرجاع تكتبه على ورقة وتحفظها.</span></div></li>
+        <li><div><b>اضبط بيانات المطعم واختر الطابعة</b><span>من الإعدادات تكتب اسم المطعم والهاتف والعنوان، ومن زر الطابعة تختار طابعة الفواتير مرة واحدة.</span></div></li>
+        <li><div><b>جرّب 3 أيام مجانًا</b><span>كل الميزات تعمل خلال التجربة، فتجرّب يوم عمل حقيقيًا قبل أن تقرر.</span></div></li>
+        <li><div><b>فعّل بمفتاح خاص بجهازك</b><span>تُرسل لنا بصمة جهازك فنعطيك مفتاح التفعيل. لا حاجة للإنترنت أثناء التفعيل.</span></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap inner">
+    <div>
+      <h2>جرّب آفاق كاشير في مطعمك</h2>
+      <p>راسلنا على واتساب وسنرسل لك ملف التثبيت ونساعدك في إعداد الطابعة وأول يوم عمل.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+      <a class="btn btn-wa" href="https://wa.me/963939643607?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%86%D8%B3%D8%AE%D8%A9%20%D8%AA%D8%AC%D8%B1%D9%8A%D8%A8%D9%8A%D8%A9%20%D9%85%D9%86%20%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC%20%D8%A2%D9%81%D8%A7%D9%82%20%D9%83%D8%A7%D8%B4%D9%8A%D8%B1" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 .1 5.3.1 11.9c0 2.1.6 4.2 1.6 6L0 24l6.3-1.7a11.9 11.9 0 0 0 5.7 1.5c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.4-8.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4a9.8 9.8 0 0 1-1.5-5.2C2.2 6.5 6.6 2.1 12 2.1c2.6 0 5.1 1 6.9 2.9a9.7 9.7 0 0 1 2.9 6.9c0 5.4-4.4 9.9-9.8 9.9zm5.4-7.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a8 8 0 0 1-2.4-1.5 9 9 0 0 1-1.6-2c-.2-.3 0-.4.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4l-.5-.3z"/></svg>
+        راسلنا على واتساب
+      </a>
+      <a href="https://github.com/kali19909/afaq-site/releases/latest/download/AfaqCashier-Setup.exe" download style="color:var(--gold);font-weight:600">أو حمّل النسخة التجريبية مباشرة</a>
+      <span class="num" style="color:#AFC0DD;font-size:15px">+963 939 643 607</span>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 آفاق</span>
+    <span><a href="index.html">آفاق ERP للمحاسبة وإدارة الأعمال</a></span>
+    <span>يعمل على ويندوز 10 وما بعده (64 بت)</span>
+  </div>
+</footer>
+</body>
+</html>
